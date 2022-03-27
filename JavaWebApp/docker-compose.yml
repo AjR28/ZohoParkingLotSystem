@@ -1,0 +1,23 @@
+version: '2.2'
+
+services:
+  app:
+    image: tomcat
+    build: 
+        context: appD
+        dockerfile: Dockerfile
+    ports:
+        - "8085:8080"
+    depends_on:
+        - redis
+    restart: always
+   
+  redis:
+    image: redis
+    build: 
+        context: redisD
+        dockerfile: Dockerfile
+    ports:
+        - "6379:6379"
+
+ 
